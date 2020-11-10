@@ -43,6 +43,13 @@ return [
 
     'disks' => [
 
+        'images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images'), // Crea una carpeta con el mismo nombre (en este caso 'images'). copiando el archivo .gitignore. En la ruta 'storage/app/publib/images/.gitignore', así debería quedar. Creamos esta carpeta para luego crear el enlace simbolico
+            'url' => env('APP_URL').'/images',
+            'visibility' => 'public',
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
@@ -80,6 +87,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('images') => storage_path('app/public/images'), // Enlace simbolico - Debemos de ignorarlo en el archivo .gitignore. Pon /public/images. Le pones 'images' porque eso pusiste dentro de public_path
     ],
 
 ];
