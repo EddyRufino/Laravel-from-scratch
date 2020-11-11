@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -32,7 +33,9 @@ class ProfileController extends Controller
                 $user->sendEmailVerificationNotification();
             }
 
-            $user->save();            
+            $user->save();
+
+            // dd($request->file('image'));
 
             if ($request->hasFile('image')) {
                 if ($user->image != null) {
